@@ -1,0 +1,284 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A9BE0C4415518B8200525EC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9BE0C4315518B8200525EC7 /* UIKit.framework */; };
+		A9BE0C4615518B8200525EC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9BE0C4515518B8200525EC7 /* Foundation.framework */; };
+		A9BE0C4815518B8200525EC7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9BE0C4715518B8200525EC7 /* CoreGraphics.framework */; };
+		A9BE0C4E15518B8200525EC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9BE0C4C15518B8200525EC7 /* InfoPlist.strings */; };
+		A9BE0C5015518B8200525EC7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BE0C4F15518B8200525EC7 /* main.m */; };
+		A9BE0C5415518B8200525EC7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BE0C5315518B8200525EC7 /* AppDelegate.m */; };
+		A9BE0C5715518B8200525EC7 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BE0C5515518B8200525EC7 /* MainStoryboard.storyboard */; };
+		A9BE0C5A15518B8200525EC7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BE0C5915518B8200525EC7 /* ViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A9BE0C3F15518B8200525EC7 /* Earthquake2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Earthquake2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9BE0C4315518B8200525EC7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A9BE0C4515518B8200525EC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A9BE0C4715518B8200525EC7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A9BE0C4B15518B8200525EC7 /* Earthquake2-Info.plist */ = {isa = PBXFileReference; path = "Earthquake2-Info.plist"; sourceTree = "<group>"; };
+		A9BE0C4D15518B8200525EC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A9BE0C4F15518B8200525EC7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A9BE0C5115518B8200525EC7 /* Earthquake2-Prefix.pch */ = {isa = PBXFileReference; path = "Earthquake2-Prefix.pch"; sourceTree = "<group>"; };
+		A9BE0C5215518B8200525EC7 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		A9BE0C5315518B8200525EC7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A9BE0C5615518B8200525EC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		A9BE0C5815518B8200525EC7 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		A9BE0C5915518B8200525EC7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A9BE0C3C15518B8200525EC7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9BE0C4415518B8200525EC7 /* UIKit.framework in Frameworks */,
+				A9BE0C4615518B8200525EC7 /* Foundation.framework in Frameworks */,
+				A9BE0C4815518B8200525EC7 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A9BE0C3415518B8200525EC7 = {
+			isa = PBXGroup;
+			children = (
+				A9BE0C4915518B8200525EC7 /* Earthquake2 */,
+				A9BE0C4215518B8200525EC7 /* Frameworks */,
+				A9BE0C4015518B8200525EC7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A9BE0C4015518B8200525EC7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A9BE0C3F15518B8200525EC7 /* Earthquake2.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A9BE0C4215518B8200525EC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A9BE0C4315518B8200525EC7 /* UIKit.framework */,
+				A9BE0C4515518B8200525EC7 /* Foundation.framework */,
+				A9BE0C4715518B8200525EC7 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A9BE0C4915518B8200525EC7 /* Earthquake2 */ = {
+			isa = PBXGroup;
+			children = (
+				A9BE0C5215518B8200525EC7 /* AppDelegate.h */,
+				A9BE0C5315518B8200525EC7 /* AppDelegate.m */,
+				A9BE0C5515518B8200525EC7 /* MainStoryboard.storyboard */,
+				A9BE0C5815518B8200525EC7 /* ViewController.h */,
+				A9BE0C5915518B8200525EC7 /* ViewController.m */,
+				A9BE0C4A15518B8200525EC7 /* Supporting Files */,
+			);
+			path = Earthquake2;
+			sourceTree = "<group>";
+		};
+		A9BE0C4A15518B8200525EC7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A9BE0C4B15518B8200525EC7 /* Earthquake2-Info.plist */,
+				A9BE0C4C15518B8200525EC7 /* InfoPlist.strings */,
+				A9BE0C4F15518B8200525EC7 /* main.m */,
+				A9BE0C5115518B8200525EC7 /* Earthquake2-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A9BE0C3E15518B8200525EC7 /* Earthquake2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9BE0C5D15518B8200525EC7 /* Build configuration list for PBXNativeTarget "Earthquake2" */;
+			buildPhases = (
+				A9BE0C3B15518B8200525EC7 /* Sources */,
+				A9BE0C3C15518B8200525EC7 /* Frameworks */,
+				A9BE0C3D15518B8200525EC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Earthquake2;
+			productName = Earthquake2;
+			productReference = A9BE0C3F15518B8200525EC7 /* Earthquake2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A9BE0C3615518B8200525EC7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Menlo School";
+			};
+			buildConfigurationList = A9BE0C3915518B8200525EC7 /* Build configuration list for PBXProject "Earthquake2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A9BE0C3415518B8200525EC7;
+			productRefGroup = A9BE0C4015518B8200525EC7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A9BE0C3E15518B8200525EC7 /* Earthquake2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A9BE0C3D15518B8200525EC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9BE0C4E15518B8200525EC7 /* InfoPlist.strings in Resources */,
+				A9BE0C5715518B8200525EC7 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A9BE0C3B15518B8200525EC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9BE0C5015518B8200525EC7 /* main.m in Sources */,
+				A9BE0C5415518B8200525EC7 /* AppDelegate.m in Sources */,
+				A9BE0C5A15518B8200525EC7 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A9BE0C4C15518B8200525EC7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9BE0C4D15518B8200525EC7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A9BE0C5515518B8200525EC7 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9BE0C5615518B8200525EC7 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A9BE0C5B15518B8200525EC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		A9BE0C5C15518B8200525EC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A9BE0C5E15518B8200525EC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Earthquake2/Earthquake2-Prefix.pch";
+				INFOPLIST_FILE = "Earthquake2/Earthquake2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A9BE0C5F15518B8200525EC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Earthquake2/Earthquake2-Prefix.pch";
+				INFOPLIST_FILE = "Earthquake2/Earthquake2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A9BE0C3915518B8200525EC7 /* Build configuration list for PBXProject "Earthquake2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9BE0C5B15518B8200525EC7 /* Debug */,
+				A9BE0C5C15518B8200525EC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9BE0C5D15518B8200525EC7 /* Build configuration list for PBXNativeTarget "Earthquake2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9BE0C5E15518B8200525EC7 /* Debug */,
+				A9BE0C5F15518B8200525EC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A9BE0C3615518B8200525EC7 /* Project object */;
+}
