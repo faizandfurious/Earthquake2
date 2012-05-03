@@ -21,12 +21,18 @@
 @synthesize mapView = _mapView;
 @synthesize timeFrame = _timeFrame;
 @synthesize receivedData;
+@synthesize heatMapBoolean;
+@synthesize mkCircleBoolean;
+@synthesize hm;
+@synthesize circles;
+@synthesize annotations;
 
 
 - (void)viewDidLoad
 {
     self.mapView.delegate = self;
     [super viewDidLoad];
+    
     
     NSString *pathname = [[NSBundle mainBundle] pathForResource:@"teqdata"
                                                          ofType:@"csv"];
@@ -36,7 +42,13 @@
                                                      error:NULL];
     
     receivedData = [self readFileWithContent:content];
+    circles = [[NSMutableArray alloc] init];
+    annotations = [[NSMutableArray alloc] init];
     [self drawCircle];
+    
+    hm = [[HeatMap alloc] initWithData:[self heatMapData]];
+    [self.mapView addOverlay:hm];
+    [self.mapView setVisibleMapRect:[hm boundingMapRect] animated:YES];
     
     _timeFrame.text = @"2008";
     
@@ -44,9 +56,8 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+
 - (void)drawCircle{
-    NSMutableArray *circles = [[NSMutableArray alloc] init];
-    NSMutableArray *annotations = [[NSMutableArray alloc] init];
     for(int i = 0; i < 50; i++)
     {
         NSDictionary *dict = [receivedData objectAtIndex:i];
@@ -64,18 +75,48 @@
         
         MyAnnotation *annotation = [[MyAnnotation alloc] initWithCoordinate:coordinate 
                                                                    andTitle:(strMag)];
-        MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:50000];
+        MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:mag*50000];
         [circles addObject:circle];
-        [_mapView addAnnotation:annotation];
+        [annotations addObject:annotation];
        
 
 //        [self.mapView addAnnotation:annotation];
         
     }
     
-//    NSArray *staticCircles = [NSArray arrayWithArray:circles];
+     [_mapView addAnnotations:annotations];
      [_mapView addOverlays:circles];
 
+}
+
+- (IBAction)heatMapValueChanged:(id)sender {
+    
+    heatMapBoolean = !heatMapBoolean;
+    
+    if(!heatMapBoolean)
+    {
+        [self.mapView addOverlay:hm];
+        [self.mapView setVisibleMapRect:[hm boundingMapRect] animated:YES];
+    }
+    else{
+        [self.mapView removeOverlay:hm];
+    }
+    
+}
+
+- (IBAction)mkCircleValueChanged:(id)sender {
+    
+    mkCircleBoolean = !mkCircleBoolean;
+    
+    if(!mkCircleBoolean)
+    {
+        [_mapView addAnnotations:annotations];
+        [_mapView addOverlays:circles];
+    }
+    else{
+        [_mapView removeAnnotations:annotations];
+        [_mapView removeOverlays:circles];
+    }
 }
 
 
@@ -97,12 +138,17 @@
 //implement the viewForOverlay delegate method...    
 -(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id)overlay 
 {
-    MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:overlay];
-    circleView.strokeColor = [UIColor redColor];
-    circleView.fillColor = [UIColor redColor];
-    circleView.alpha = 0.25;
-    circleView.lineWidth = 2;
-    return circleView;
+    if([overlay isKindOfClass:[HeatMap class]]){
+        return [[HeatMapView alloc] initWithOverlay:overlay];
+    }
+    else{
+        MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:overlay];
+        circleView.strokeColor = [UIColor redColor];
+        circleView.fillColor = [UIColor redColor];
+        circleView.alpha = 0.25;
+        circleView.lineWidth = 2;
+        return circleView;
+    }
 }
 
 -(NSMutableArray *) readFileWithContent:(NSString *)content{
@@ -147,4 +193,30 @@
     return result;
     
 }
+- (NSDictionary *)heatMapData
+{
+    
+    NSMutableDictionary *toRet = [[NSMutableDictionary alloc] initWithCapacity:[receivedData count]];
+    for(int i = 0; i < 50; i++)
+    {
+        NSDictionary *dict = [receivedData objectAtIndex:i];
+        id lat_val = [dict objectForKey:@"Latitude"];
+        id lon_val = [dict objectForKey:@"Longitude"];
+        id mag_val = [dict objectForKey:@"Magnitude"];
+        float lat = [lat_val floatValue];
+        float lon = [lon_val floatValue];
+        float mag = [mag_val floatValue];
+    
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lon);
+        
+        MKMapPoint point = MKMapPointForCoordinate(coordinate);
+        
+        NSValue *pointValue = [NSValue value:&point withObjCType:@encode(MKMapPoint)];
+        [toRet setObject:[NSNumber numberWithInt:1] forKey:pointValue];
+    }
+    
+    
+    return toRet;
+}
+
 @end
