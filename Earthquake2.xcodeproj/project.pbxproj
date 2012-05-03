@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A949BDDA15523DBE00C23FE0 /* eqdata2.txt in Resources */ = {isa = PBXBuildFile; fileRef = A949BDD915523DBE00C23FE0 /* eqdata2.txt */; };
+		A949BDDD15523E3F00C23FE0 /* teqdata.csv in Resources */ = {isa = PBXBuildFile; fileRef = A949BDDC15523E3F00C23FE0 /* teqdata.csv */; };
 		A9AC263E1551CF7A00A098A2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AC263D1551CF7A00A098A2 /* CoreLocation.framework */; };
 		A9BE0C4415518B8200525EC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9BE0C4315518B8200525EC7 /* UIKit.framework */; };
 		A9BE0C4615518B8200525EC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9BE0C4515518B8200525EC7 /* Foundation.framework */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A949BDD915523DBE00C23FE0 /* eqdata2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = eqdata2.txt; path = ../../eqdata2.txt; sourceTree = "<group>"; };
+		A949BDDC15523E3F00C23FE0 /* teqdata.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = teqdata.csv; path = ../../teqdata.csv; sourceTree = "<group>"; };
 		A9AC263D1551CF7A00A098A2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A9BE0C3F15518B8200525EC7 /* Earthquake2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Earthquake2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9BE0C4315518B8200525EC7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -101,6 +105,7 @@
 		A9BE0C4915518B8200525EC7 /* Earthquake2 */ = {
 			isa = PBXGroup;
 			children = (
+				A949BDD915523DBE00C23FE0 /* eqdata2.txt */,
 				A9BE0C7D1551BB9000525EC7 /* eqdata.txt */,
 				A9BE0C5215518B8200525EC7 /* AppDelegate.h */,
 				A9BE0C5315518B8200525EC7 /* AppDelegate.m */,
@@ -117,6 +122,7 @@
 		A9BE0C4A15518B8200525EC7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A949BDDC15523E3F00C23FE0 /* teqdata.csv */,
 				A9BE0C7715519DDC00525EC7 /* eqdata.csv */,
 				A9BE0C4B15518B8200525EC7 /* Earthquake2-Info.plist */,
 				A9BE0C4C15518B8200525EC7 /* InfoPlist.strings */,
@@ -184,6 +190,8 @@
 				A9BE0C5715518B8200525EC7 /* MainStoryboard.storyboard in Resources */,
 				A9BE0C7815519DDC00525EC7 /* eqdata.csv in Resources */,
 				A9BE0C7E1551BB9000525EC7 /* eqdata.txt in Resources */,
+				A949BDDA15523DBE00C23FE0 /* eqdata2.txt in Resources */,
+				A949BDDD15523E3F00C23FE0 /* teqdata.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

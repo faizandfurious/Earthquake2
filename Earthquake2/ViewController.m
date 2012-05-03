@@ -19,6 +19,7 @@
 
 @synthesize allEntries = _allEntries;
 @synthesize mapView = _mapView;
+@synthesize timeFrame = _timeFrame;
 @synthesize receivedData;
 
 
@@ -27,7 +28,7 @@
     self.mapView.delegate = self;
     [super viewDidLoad];
     
-    NSString *pathname = [[NSBundle mainBundle] pathForResource:@"eqdata"
+    NSString *pathname = [[NSBundle mainBundle] pathForResource:@"teqdata"
                                                          ofType:@"csv"];
     
     NSString* content = [NSString stringWithContentsOfFile:pathname
@@ -37,13 +38,16 @@
     receivedData = [self readFileWithContent:content];
     [self drawCircle];
     
+    _timeFrame.text = @"2008";
+    
 
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)drawCircle{
     NSMutableArray *circles = [[NSMutableArray alloc] init];
-    for(int i = 0; i < receivedData.count; i++)
+    NSMutableArray *annotations = [[NSMutableArray alloc] init];
+    for(int i = 0; i < 50; i++)
     {
         NSDictionary *dict = [receivedData objectAtIndex:i];
         id lat_val = [dict objectForKey:@"Latitude"];
@@ -56,10 +60,13 @@
 
         CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lon);
 //        NSLog(@" Coordinates: (%f, %f), Magnitude: %f", coordinate.latitude, coordinate.longitude, mag);
-//        MyAnnotation *annotation = [[MyAnnotation alloc] initWithCoordinate:coordinate];
-        MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:mag*50000];
+        NSString *strMag = [NSString stringWithFormat:@"%f", mag];
+        
+        MyAnnotation *annotation = [[MyAnnotation alloc] initWithCoordinate:coordinate 
+                                                                   andTitle:(strMag)];
+        MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:50000];
         [circles addObject:circle];
-
+        [_mapView addAnnotation:annotation];
        
 
 //        [self.mapView addAnnotation:annotation];
@@ -67,7 +74,7 @@
     }
     
 //    NSArray *staticCircles = [NSArray arrayWithArray:circles];
-    [_mapView addOverlays:circles];
+     [_mapView addOverlays:circles];
 
 }
 
@@ -76,6 +83,7 @@
 {
     [self setMapView:nil];
     [self setMapView:nil];
+    [self setTimeFrame:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

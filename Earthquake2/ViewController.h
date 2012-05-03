@@ -20,6 +20,7 @@
 @property (retain) NSMutableArray *allEntries;
 @property (strong, nonatomic) NSMutableArray *receivedData;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UILabel *timeFrame;
 
 - (void)drawCircle;
 
