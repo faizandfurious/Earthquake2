@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A949BCD61552256B00C23FE0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A949BCD41552256B00C23FE0 /* Model.xcdatamodeld */; };
+		A949BCDA155225B700C23FE0 /* Earthquake.m in Sources */ = {isa = PBXBuildFile; fileRef = A949BCD9155225B700C23FE0 /* Earthquake.m */; };
 		A9AC263E1551CF7A00A098A2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AC263D1551CF7A00A098A2 /* CoreLocation.framework */; };
 		A9BE0C4415518B8200525EC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9BE0C4315518B8200525EC7 /* UIKit.framework */; };
 		A9BE0C4615518B8200525EC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9BE0C4515518B8200525EC7 /* Foundation.framework */; };
@@ -26,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A949BCD51552256B00C23FE0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		A949BCD8155225B700C23FE0 /* Earthquake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Earthquake.h; sourceTree = "<group>"; };
+		A949BCD9155225B700C23FE0 /* Earthquake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Earthquake.m; sourceTree = "<group>"; };
 		A9AC263D1551CF7A00A098A2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A9BE0C3F15518B8200525EC7 /* Earthquake2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Earthquake2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9BE0C4315518B8200525EC7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -110,6 +115,8 @@
 				A9BE0C4A15518B8200525EC7 /* Supporting Files */,
 				A9D8AFCA1551DA2800362481 /* MyAnnotation.h */,
 				A9D8AFCB1551DA2800362481 /* MyAnnotation.m */,
+				A949BCD8155225B700C23FE0 /* Earthquake.h */,
+				A949BCD9155225B700C23FE0 /* Earthquake.m */,
 			);
 			path = Earthquake2;
 			sourceTree = "<group>";
@@ -125,6 +132,7 @@
 				A9BE0C6415518BC100525EC7 /* Earthquake.xcdatamodeld */,
 				A9BE0C6715518BF800525EC7 /* Event.h */,
 				A9BE0C6815518BF800525EC7 /* Event.m */,
+				A949BCD41552256B00C23FE0 /* Model.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -200,6 +208,8 @@
 				A9BE0C6615518BC100525EC7 /* Earthquake.xcdatamodeld in Sources */,
 				A9BE0C6915518BF800525EC7 /* Event.m in Sources */,
 				A9D8AFCC1551DA2800362481 /* MyAnnotation.m in Sources */,
+				A949BCD61552256B00C23FE0 /* Model.xcdatamodeld in Sources */,
+				A949BCDA155225B700C23FE0 /* Earthquake.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,10 +285,14 @@
 		A9BE0C5E15518B8200525EC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Faiz Abbasi (7PCUE9D89P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Faiz Abbasi (7PCUE9D89P)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Earthquake2/Earthquake2-Prefix.pch";
 				INFOPLIST_FILE = "Earthquake2/Earthquake2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "27CA20A2-173D-4657-A6D8-556968455D02";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "27CA20A2-173D-4657-A6D8-556968455D02";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -286,10 +300,14 @@
 		A9BE0C5F15518B8200525EC7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Faiz Abbasi (7PCUE9D89P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Faiz Abbasi (7PCUE9D89P)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Earthquake2/Earthquake2-Prefix.pch";
 				INFOPLIST_FILE = "Earthquake2/Earthquake2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "27CA20A2-173D-4657-A6D8-556968455D02";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "27CA20A2-173D-4657-A6D8-556968455D02";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -318,6 +336,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		A949BCD41552256B00C23FE0 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A949BCD51552256B00C23FE0 /* Model.xcdatamodel */,
+			);
+			currentVersion = A949BCD51552256B00C23FE0 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		A9BE0C6415518BC100525EC7 /* Earthquake.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

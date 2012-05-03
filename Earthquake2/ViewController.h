@@ -13,15 +13,21 @@
 
 @interface ViewController : UIViewController <MKMapViewDelegate>{
     
-    NSMutableArray *_allEntries;
+    NSMutableArray *earthquakeArray;
+    NSManagedObjectModel *managedObjectModel;
+    NSManagedObjectContext *managedObjectContext;       
+    NSPersistentStoreCoordinator *persistentStoreCoordinator;
     
 }
 
-@property (retain) NSMutableArray *allEntries;
+@property (retain, nonatomic) NSMutableArray *earthquakeArray;
+@property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (strong, nonatomic) NSMutableArray *receivedData;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 - (void)drawCircle;
-
+- (NSString *)applicationDocumentsDirectory;
 
 @end
