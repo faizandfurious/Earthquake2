@@ -242,7 +242,7 @@
 
 //This method allows the user to see a visualization of the earthquakes, based on time
 - (void) drawAnimatedCircles {
-    NSLog(@"%i", self.counter);
+   
 
     [_mapView removeOverlays:circles];
 
