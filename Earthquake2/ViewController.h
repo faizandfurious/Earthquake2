@@ -26,11 +26,18 @@
 @property (nonatomic) BOOL heatMapBoolean;
 @property (strong, nonatomic) HeatMap *hm;
 @property (nonatomic) BOOL changedboolean;
+@property (strong, nonatomic) IBOutlet UISlider *timeSlider;
+@property (strong, nonatomic) NSTimer *timer;
+@property (strong, nonatomic) IBOutlet UIButton *animateEarthquakesButton;
+@property (strong, nonatomic) IBOutlet UILabel *yearLabel;
 
 
 
 - (void)drawCircles;
 - (IBAction)heatMapValueChanged:(id)sender;
+- (IBAction)timeSliderValueChanged:(id)sender;
+- (void)drawAnimatedCircles;
+- (IBAction)animateEarthquakesButtonOnTouchDown:(id)sender;
 
 
 @end
