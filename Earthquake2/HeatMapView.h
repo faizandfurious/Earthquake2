@@ -47,3 +47,4 @@
 @interface HeatMapView : MKOverlayView
 
 @end
+

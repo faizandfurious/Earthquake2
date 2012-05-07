@@ -9,9 +9,11 @@
 #import "ViewController.h"
 
 
+
 @interface ViewController ()
-
-
+@property int count;
+@property NSMutableArray *circles;
+@property NSTimer *timer;
 
 @end
 
@@ -19,22 +21,28 @@
 
 @synthesize allEntries = _allEntries;
 @synthesize mapView = _mapView;
-@synthesize timeFrame = _timeFrame;
 @synthesize receivedData;
 @synthesize heatMapBoolean;
-@synthesize mkCircleBoolean;
 @synthesize hm;
+@synthesize count;
+@synthesize changedboolean;
+@synthesize timeSlider;
+@synthesize timeLabel;
+@synthesize visualizeEarthquakesButton;
 @synthesize circles;
-@synthesize annotations;
+@synthesize timer;
 
 
 - (void)viewDidLoad
 {
     self.mapView.delegate = self;
     [super viewDidLoad];
+    count = 0;
+    timeSlider.minimumValue = 0;
+    timeSlider.maximumValue = 2013;
+    circles = [[NSMutableArray alloc] init];
     
-    
-    NSString *pathname = [[NSBundle mainBundle] pathForResource:@"teqdata"
+    NSString *pathname = [[NSBundle mainBundle] pathForResource:@"sigeqdata3"
                                                          ofType:@"csv"];
     
     NSString* content = [NSString stringWithContentsOfFile:pathname
@@ -42,51 +50,90 @@
                                                      error:NULL];
     
     receivedData = [self readFileWithContent:content];
-    circles = [[NSMutableArray alloc] init];
-    annotations = [[NSMutableArray alloc] init];
-    [self drawCircle];
+    [self drawCircleWithMaximumTime:2013];
     
     hm = [[HeatMap alloc] initWithData:[self heatMapData]];
     [self.mapView addOverlay:hm];
     [self.mapView setVisibleMapRect:[hm boundingMapRect] animated:YES];
     
-    _timeFrame.text = @"2008";
     
 
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
 
-- (void)drawCircle{
-    for(int i = 0; i < 50; i++)
+- (void)drawCircleWithMaximumTime:(int)maxYear{
+    NSMutableArray *annotations = [[NSMutableArray alloc] init];
+    
+    circles.removeAllObjects;
+    
+    for(int i = 0; i < receivedData.count; i++)
     {
         NSDictionary *dict = [receivedData objectAtIndex:i];
         id lat_val = [dict objectForKey:@"Latitude"];
         id lon_val = [dict objectForKey:@"Longitude"];
         id mag_val = [dict objectForKey:@"Magnitude"];
+        id year_val = [dict objectForKey:@"Year"];
+        id id_val = [dict objectForKey:@"id"];
         float lat = [lat_val floatValue];
         float lon = [lon_val floatValue];
         float mag = [mag_val floatValue];
-        
+        float year = [year_val floatValue];
+        int eid = [id_val intValue];
+        if( year < maxYear)
+        {
 
-        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lon);
-//        NSLog(@" Coordinates: (%f, %f), Magnitude: %f", coordinate.latitude, coordinate.longitude, mag);
-        NSString *strMag = [NSString stringWithFormat:@"%f", mag];
-        
-        MyAnnotation *annotation = [[MyAnnotation alloc] initWithCoordinate:coordinate 
-                                                                   andTitle:(strMag)];
-        MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:mag*50000];
-        [circles addObject:circle];
-        [annotations addObject:annotation];
-       
-
-//        [self.mapView addAnnotation:annotation];
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lon);
+            NSString *strMag = [NSString stringWithFormat:@"%f", mag];
+            
+            MyAnnotation *annotation = [[MyAnnotation alloc] initWithCoordinate:coordinate 
+                                                                       andTitle:(strMag)];
+            MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:mag*50000];
+            [circles addObject:circle];
+            [annotations addObject:annotation];
+        }
         
     }
     
-     [_mapView addAnnotations:annotations];
-     [_mapView addOverlays:circles];
+    [_mapView addOverlays:circles];
 
+}
+
+- (void)drawCircles{
+    //NSLog(@"%i", count);
+    if(count < 2013)
+    {
+        for(int i = 0; i < receivedData.count; i++)
+        {
+            NSLog(@"Yes");
+            NSDictionary *dict = [receivedData objectAtIndex:i];
+            id lat_val = [dict objectForKey:@"Latitude"];
+            id lon_val = [dict objectForKey:@"Longitude"];
+            id mag_val = [dict objectForKey:@"Magnitude"];
+            id year_val = [dict objectForKey:@"Year"];
+            id id_val = [dict objectForKey:@"id"];
+            float lat = [lat_val floatValue];
+            float lon = [lon_val floatValue];
+            float mag = [mag_val floatValue];
+            float year = [year_val floatValue];
+            int eid = [id_val intValue];
+            if( year < count)
+            {
+                
+                CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lon);
+                NSString *strMag = [NSString stringWithFormat:@"%f", mag];
+                
+                MyAnnotation *annotation = [[MyAnnotation alloc] initWithCoordinate:coordinate 
+                                                                           andTitle:(strMag)];
+                MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:mag*50000];
+                [circles addObject:circle];
+            }
+            
+        }
+    }
+    count++;
+    
+    [_mapView addOverlays:circles];
 }
 
 - (IBAction)heatMapValueChanged:(id)sender {
@@ -105,18 +152,6 @@
 }
 
 - (IBAction)mkCircleValueChanged:(id)sender {
-    
-    mkCircleBoolean = !mkCircleBoolean;
-    
-    if(!mkCircleBoolean)
-    {
-        [_mapView addAnnotations:annotations];
-        [_mapView addOverlays:circles];
-    }
-    else{
-        [_mapView removeAnnotations:annotations];
-        [_mapView removeOverlays:circles];
-    }
 }
 
 
@@ -124,7 +159,9 @@
 {
     [self setMapView:nil];
     [self setMapView:nil];
-    [self setTimeFrame:nil];
+    [self setTimeSlider:nil];
+    [self setTimeLabel:nil];
+    [self setVisualizeEarthquakesButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -136,17 +173,26 @@
 
 
 //implement the viewForOverlay delegate method...    
--(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id)overlay 
+-(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay 
 {
     if([overlay isKindOfClass:[HeatMap class]]){
         return [[HeatMapView alloc] initWithOverlay:overlay];
     }
     else{
         MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:overlay];
-        circleView.strokeColor = [UIColor redColor];
-        circleView.fillColor = [UIColor redColor];
-        circleView.alpha = 0.25;
+        if(count < 415)
+        {
+            circleView.fillColor = [UIColor redColor];
+            circleView.strokeColor = [UIColor redColor];
+        }
+        else {
+            circleView.fillColor = [UIColor blueColor];            
+            circleView.strokeColor = [UIColor blueColor];
+        }
+        circleView.alpha = 1;
+        circleView.alpha = 0.05;
         circleView.lineWidth = 2;
+        count++;
         return circleView;
     }
 }
@@ -196,8 +242,9 @@
 - (NSDictionary *)heatMapData
 {
     
+    
     NSMutableDictionary *toRet = [[NSMutableDictionary alloc] initWithCapacity:[receivedData count]];
-    for(int i = 0; i < 50; i++)
+    for(int i = 0; i < receivedData.count; i++)
     {
         NSDictionary *dict = [receivedData objectAtIndex:i];
         id lat_val = [dict objectForKey:@"Latitude"];
@@ -217,6 +264,53 @@
     
     
     return toRet;
+}
+
+
+
+- (IBAction)displayTouchDown:(id)sender {
+    NSLog(@"%@", [self.view subviews]);
+    changedboolean = !changedboolean;
+    
+    if(changedboolean){
+        for (UIView *subview in [self.view subviews]) {
+            // Only remove the subviews with tag equal to 1 (the wheel)
+            if (subview.tag == 1) {
+                [subview removeFromSuperview];
+            }
+        }
+    }
+    else{
+        
+        
+    }
+}
+
+- (IBAction)sliderChanged:(id)sender {
+    [_mapView removeOverlays:circles];
+    float temp = self.timeSlider.value;
+    NSInteger year = temp;
+    [self drawCircleWithMaximumTime:self.timeSlider.value];
+    
+}
+
+
+- (IBAction)visualizeEarthquakes:(id)sender {
+    [self startAnimating];
+    
+
+
+}
+
+-(id) startAnimating{
+    [_mapView removeOverlays:circles];
+    UIImageView *im = [[UIImageView alloc] initWithFrame:_mapView.frame];
+    im.image = [UIImage imageNamed:@"thirdofcircle.png"];
+    im.animationDuration = 5;
+    [im startAnimating];
+    [self.view addSubview:im];
+        [im removeFromSuperview];
+    return self;
 }
 
 @end

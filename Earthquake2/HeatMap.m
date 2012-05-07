@@ -31,7 +31,7 @@
 #define ZOOM_LEVELS 20
 
 //alterable constant to change look of heat map
-#define POWER 4
+#define POWER 1
 
 @interface HeatMap()
 

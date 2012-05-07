@@ -16,22 +16,28 @@
 @interface ViewController : UIViewController <MKMapViewDelegate>{
     
     NSMutableArray *_allEntries;
+    CGColorRef *colors;
     
 }
 
 @property (retain) NSMutableArray *allEntries;
 @property (strong, nonatomic) NSMutableArray *receivedData;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) IBOutlet UILabel *timeFrame;
 @property (nonatomic) BOOL heatMapBoolean;
-@property (nonatomic) BOOL mkCircleBoolean;
 @property (strong, nonatomic) HeatMap *hm;
-@property (strong, nonatomic) NSMutableArray *circles;
-@property (strong, nonatomic) NSMutableArray *annotations;
+@property (nonatomic) BOOL changedboolean;
+@property (strong, nonatomic) IBOutlet UISlider *timeSlider;
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (strong, nonatomic) IBOutlet UIButton *visualizeEarthquakesButton;
 
-- (void)drawCircle;
+
+
+- (void)drawCircleWithMaximumTime:(int)maxYear;
+- (void)drawCircles;
 - (IBAction)heatMapValueChanged:(id)sender;
-- (IBAction)mkCircleValueChanged:(id)sender;
+- (IBAction)sliderChanged:(id)sender;
+- (IBAction)visualizeEarthquakes:(id)sender;
+- (id) startAnimating;
 
 
 @end
