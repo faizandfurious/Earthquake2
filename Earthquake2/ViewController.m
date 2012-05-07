@@ -25,7 +25,6 @@
 @synthesize heatMapBoolean;
 @synthesize hm;
 @synthesize changedboolean;
-@synthesize timeSlider;
 @synthesize circles;
 @synthesize timer;
 @synthesize animateEarthquakesButton;
@@ -47,12 +46,14 @@
                                                      error:NULL];
     
     receivedData = [self readFileWithContent:content];
-    NSDictionary *dictFirst = [receivedData objectAtIndex:0];
-    id year_val1 = [dictFirst objectForKey:@"Year"];
-    int year1 = [year_val1 intValue];
-    timeSlider.minimumValue = year1;
-    timeSlider.maximumValue = 2013;
-    yearLabel.text = @"The Year is 2012.";
+    NSDictionary *dictSecond = [receivedData lastObject];
+    id year_val2 = [dictSecond objectForKey:@"Year"];
+    int year2 = [year_val2 intValue];
+    NSString *strYear = [NSString stringWithFormat:@"%i", year2];
+    NSString *theYear = @"The Year is ";
+    NSMutableString *finalString = [NSMutableString stringWithString:theYear];
+    [finalString appendString:strYear];
+    yearLabel.text = finalString;
     
     [self drawCircles];
     
@@ -92,42 +93,6 @@
     [_mapView addOverlays:circles];
 }
 
-- (void)drawCircleWithMaximumTime:(int)maxYear{
-    NSMutableArray *annotations = [[NSMutableArray alloc] init];
-    
-    circles.removeAllObjects;
-    
-    for(int i = 0; i < receivedData.count; i++)
-    {
-        NSDictionary *dict = [receivedData objectAtIndex:i];
-        id lat_val = [dict objectForKey:@"Latitude"];
-        id lon_val = [dict objectForKey:@"Longitude"];
-        id mag_val = [dict objectForKey:@"Magnitude"];
-        id year_val = [dict objectForKey:@"Year"];
-        id id_val = [dict objectForKey:@"id"];
-        float lat = [lat_val floatValue];
-        float lon = [lon_val floatValue];
-        float mag = [mag_val floatValue];
-        float year = [year_val floatValue];
-        int eid = [id_val intValue];
-        if( year < maxYear)
-        {
-            
-            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lon);
-            NSString *strMag = [NSString stringWithFormat:@"%f", mag];
-            
-            MyAnnotation *annotation = [[MyAnnotation alloc] initWithCoordinate:coordinate 
-                                                                       andTitle:(strMag)];
-            MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:mag*50000];
-            [circles addObject:circle];
-            [annotations addObject:annotation];
-        }
-        
-    }
-    
-    [_mapView addOverlays:circles];
-    
-}
 
 - (IBAction)heatMapValueChanged:(id)sender {
     
@@ -144,19 +109,10 @@
     
 }
 
-- (IBAction)timeSliderValueChanged:(id)sender {
-    
-    [_mapView removeOverlays:circles];
-    [self drawCircleWithMaximumTime:self.timeSlider.value];
-    
-}
-
-
 
 - (void)viewDidUnload
 {
     [self setMapView:nil];
-    [self setTimeSlider:nil];
     [self setAnimateEarthquakesButton:nil];
     [self setYearLabel:nil];
     [super viewDidUnload];
@@ -172,28 +128,31 @@
 //implement the viewForOverlay delegate method...    
 -(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay 
 {
-    int value = (self.counter/1987)*100;
+    int value = (self.counter/receivedData.count)*100;
     CGFloat red, green, blue;
     if([overlay isKindOfClass:[HeatMap class]]){
         return [[HeatMapView alloc] initWithOverlay:overlay];
     }
     else{
         MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:overlay];
-        
+        //Set the color based on when the earthquake occurred.
         if(self.counter <= 0) { 
-            red = green = blue = 0;
-        } else if(self.counter < 400) {
+            circleView.fillColor = [UIColor greenColor];
+            circleView.strokeColor = [UIColor greenColor];
+            circleView.alpha = 0.2;
+            circleView.lineWidth = 2;
+        } else if(self.counter < receivedData.count*.2) {
             red = green = 0;
             blue = 4 * (value + 0.125);
-        } else if(self.counter < 800) {
+        } else if(self.counter < receivedData.count*.4) {
             red = 0;
             green = 4 * (value - 0.125);
             blue = 1;
-        } else if(self.counter < 1200) {
+        } else if(self.counter < receivedData.count*.6) {
             red = 4 * (value - 0.375);
             green = 1;
             blue = 1 - 4 * (value - 1600);
-        } else if(self.counter < 0.875) {
+        } else if(self.counter < receivedData.count*.8) {
             red = 1;
             green = 1 - 4 * (value - 0.625);
             blue = 0;
@@ -211,9 +170,11 @@
     }
 }
 
+//This method reads the data from a csv file and makes it available to the application.
 -(NSMutableArray *) readFileWithContent:(NSString *)content{
     
     NSMutableArray *result = [NSMutableArray array];
+    //The CSV file ends with PDE, which is unncessary and thus is the delimiter for each row.
     NSArray *lines = [content componentsSeparatedByString:@",PDE"];
     NSEnumerator *theEnum = [lines objectEnumerator];
     NSArray *keys = nil;
@@ -226,6 +187,7 @@
         {
             if(nil == keys)
             {
+                //Looks for commas to separate columns
                 keys = [theLine componentsSeparatedByString:@","];
                 keyCount = [keys count];
                 
@@ -256,7 +218,7 @@
 - (NSDictionary *)heatMapData
 {
     
-    
+    //Pulls the data, then populates the heatmap with the latitudes and longitudes.
     NSMutableDictionary *toRet = [[NSMutableDictionary alloc] initWithCapacity:[receivedData count]];
     for(int i = 0; i < receivedData.count; i++)
     {
@@ -278,13 +240,13 @@
     return toRet;
 }
 
+//This method allows the user to see a visualization of the earthquakes, based on time
 - (void) drawAnimatedCircles {
     NSLog(@"%i", self.counter);
-    if(self.counter == 0)
-    {
-        [_mapView removeOverlays:circles];
-    }
-    if(self.counter < 1987)
+
+    [_mapView removeOverlays:circles];
+
+    if(self.counter < receivedData.count)
     {
         NSDictionary *dict = [receivedData objectAtIndex:self.counter];
         id lat_val = [dict objectForKey:@"Latitude"];
@@ -308,7 +270,8 @@
         [_mapView addOverlay:circle];
         
         self.counter++;
-    [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(drawAnimatedCircles) userInfo:nil repeats:NO];
+        //Continually calls this method until it reaches the final row.
+        [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(drawAnimatedCircles) userInfo:nil repeats:NO];
     }
     
 }

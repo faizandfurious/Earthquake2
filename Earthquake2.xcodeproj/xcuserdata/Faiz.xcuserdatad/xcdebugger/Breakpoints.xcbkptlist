@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Earthquake2/ViewController.m"
-         timestampString = "358098384.513874"
+         timestampString = "358099825.40896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64"
+         startingLineNumber = "65"
+         endingLineNumber = "65"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Earthquake2/ViewController.m"
-         timestampString = "358098384.513874"
+         timestampString = "358099825.40896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "145"
-         endingLineNumber = "145"
+         startingLineNumber = "110"
+         endingLineNumber = "110"
          landmarkName = "-heatMapValueChanged:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Earthquake2/ViewController.m"
-         timestampString = "358098384.513874"
+         timestampString = "358099825.40896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "261"
-         endingLineNumber = "261"
+         startingLineNumber = "223"
+         endingLineNumber = "223"
          landmarkName = "-heatMapData"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Earthquake2/ViewController.m"
-         timestampString = "358098384.513874"
+         timestampString = "358099825.40896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "228"
-         endingLineNumber = "228"
+         startingLineNumber = "189"
+         endingLineNumber = "189"
          landmarkName = "-readFileWithContent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Earthquake2/ViewController.m"
-         timestampString = "358098384.513874"
+         timestampString = "358099825.40896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "229"
-         endingLineNumber = "229"
+         startingLineNumber = "191"
+         endingLineNumber = "191"
          landmarkName = "-readFileWithContent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Earthquake2/ViewController.m"
-         timestampString = "358098384.513874"
+         timestampString = "358099825.40896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "246"
-         endingLineNumber = "246"
+         startingLineNumber = "208"
+         endingLineNumber = "208"
          landmarkName = "-readFileWithContent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -99,37 +99,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Earthquake2/ViewController.m"
-         timestampString = "358098384.513874"
+         timestampString = "358099825.40896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "54"
-         endingLineNumber = "54"
-         landmarkName = "-viewDidLoad"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Earthquake2/ViewController.m"
-         timestampString = "358098384.513874"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "53"
-         endingLineNumber = "53"
-         landmarkName = "-viewDidLoad"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Earthquake2/ViewController.m"
-         timestampString = "358098384.513874"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "204"
-         endingLineNumber = "204"
+         startingLineNumber = "163"
+         endingLineNumber = "163"
          landmarkName = "-mapView:viewForOverlay:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -138,11 +112,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Earthquake2/ViewController.m"
-         timestampString = "358098384.513874"
+         timestampString = "358099825.40896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "287"
-         endingLineNumber = "287"
+         startingLineNumber = "249"
+         endingLineNumber = "249"
          landmarkName = "-drawAnimatedCircles"
          landmarkType = "5">
       </FileBreakpoint>
@@ -151,11 +125,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Earthquake2/ViewController.m"
-         timestampString = "358098384.513874"
+         timestampString = "358099825.40896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "203"
-         endingLineNumber = "203"
+         startingLineNumber = "162"
+         endingLineNumber = "162"
+         landmarkName = "-mapView:viewForOverlay:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Earthquake2/ViewController.m"
+         timestampString = "358099825.40896"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "131"
+         endingLineNumber = "131"
          landmarkName = "-mapView:viewForOverlay:"
          landmarkType = "5">
       </FileBreakpoint>
